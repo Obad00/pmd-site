@@ -339,3 +339,11 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 
 /* Écart volontaire : en une colonne, le tableau « Trois exemples » élargissait la page Certification (527 px pour un écran de 390 px). Il défile désormais dans son cadre. */
 @media (max-width:900px){.decide>.stage{min-width:0}}
+
+/* Écart volontaire : sur mobile, les 4 chiffres du hero d'accueil passaient sur 2 lignes (3 + 1). Ils tiennent désormais sur une seule. */
+@media (max-width:600px){
+  .hero .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 10px}
+  .hero .stats div{padding-right:10px;margin-right:0}
+  .hero .stats strong{font-size:clamp(22px,7vw,32px)}
+  .hero .stats span{font-size:12px;line-height:1.3}
+}
