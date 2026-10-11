@@ -336,3 +336,6 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 
 /* Écart volontaire : dans la maquette, « Candidater » devenait rouge sur rouge sur la page candidature. */
 .main-nav .nav-cta[aria-current="page"]{color:#fff}
+
+/* Écart volontaire : en une colonne, le tableau « Trois exemples » élargissait la page Certification (527 px pour un écran de 390 px). Il défile désormais dans son cadre. */
+@media (max-width:900px){.decide>.stage{min-width:0}}
