@@ -5,7 +5,7 @@ export const config = {
   brand: 'Yello UPSKILL', // jamais « Yello Academy » ni « Yello Mobility »
   duration: { weeks: 12, hours: 72, phases: 4, weeksPerPhase: 3, modulesPerPhase: 3, modules: 12, exams: 5, domains: 5 },
   session: { year: 2026, month: 12, day: 5, everyMonths: 3 },
-  minAge: 18,
+  minAge: 21,
   prices: { pack: 120000, training: 72000, exam: 48000, book: 14900 },
   thresholds: { quiz: 80, global: 75, domain: 60, retakeMonths: 3 },
   contact: {
@@ -35,6 +35,10 @@ export function sessionCountdown() {
   const days = Math.ceil((Date.UTC(session.year, session.month - 1, session.day) - Date.now()) / 864e5)
   return days > 0 ? `J-${days}` : 'session en cours'
 }
+
+// Lien WhatsApp vers le numéro principal, avec un message prérempli facultatif.
+export const whatsappUrl = (text, number = config.contact.whatsapp) =>
+  `https://wa.me/${String(number).replace(/\D/g, '')}` + (text ? `?text=${encodeURIComponent(text)}` : '')
 
 export const price = {
   pack: fcfa(prices.pack),

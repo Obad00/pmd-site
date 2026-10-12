@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Page from '../components/Page.jsx'
 import { ExamsFull } from '../components/Blocks.jsx'
-import { config, price } from '../config.js'
+import { config, price, whatsappUrl } from '../config.js'
 import certificat from '../assets/certificat-specimen-yello-upskill.jpg'
 import logo from '../assets/pmd-logo.png'
 
@@ -32,18 +32,18 @@ export default function Certification() {
           <div className="heading"><div><p className="eyebrow">Conditions d’éligibilité</p><h2>Qui peut entrer dans le programme ?</h2></div><p>Deux séries de conditions : celles pour être admis en formation, puis celles pour accéder aux épreuves finales.</p></div>
           <div className="elig">
             <div className="stage">
-              <div className="stage-top"><span>Pour être admis</span><span>Avant la session</span></div>
+              <div className="stage-top"><span>Pour être admis</span></div>
               <div className="list">
                 <div><span><b>Avoir {minAge} ans révolus</b><p>À la date de début de la session.</p></span></div>
                 <div><span><b>Être titulaire d’un permis de conduire valide</b><p>En cours de validité au moment de l’inscription.</p></span></div>
-                <div><span><b>Déposer un dossier complet</b><p>Formulaire de candidature, copie de la pièce d’identité et copie du permis de conduire.</p></span></div>
+                <div><span><b>Déposer un dossier complet</b><p>Formulaire de candidature, copie de la pièce d’identité, copie du permis de conduire et extrait de casier judiciaire valide.</p></span></div>
                 <div><span><b>Être retenu après étude du dossier</b><p>Chaque candidature est examinée, puis suivie d’un échange avec l’équipe PMD.</p></span></div>
                 <div><span><b>Régler les frais d’inscription</b><p>Avant le premier jour de la session.</p></span></div>
                 <div><span><b>S’engager à respecter le code de conduite PMD</b><p>Assiduité, ponctualité, respect des personnes et des consignes de sécurité.</p></span></div>
               </div>
             </div>
             <div className="stage">
-              <div className="stage-top"><span>Pour accéder aux épreuves</span><span>Pendant la formation</span></div>
+              <div className="stage-top"><span>Pour accéder aux épreuves</span></div>
               <div className="list">
                 <div><span><b>Parcours accompagné : suivre les {duration.modules} modules</b><p>Sur {duration.weeks} semaines et {duration.hours} heures, en validant chaque quiz de module avec au moins {thresholds.quiz} %.</p></span></div>
                 <div><span><b>Candidat libre : s’inscrire directement à l’examen</b><p>Vous vous préparez seul, par exemple avec le PMD™ BOOK, puis vous passez les mêmes {duration.exams} épreuves, avec les mêmes critères de réussite.</p></span></div>
@@ -67,20 +67,20 @@ export default function Certification() {
           <div className="heading"><div><p className="eyebrow">Critères de certification</p><h2>Comment la décision est prise.</h2></div><p>Aux épreuves finales, trois conditions doivent être réunies en même temps. Si une seule manque, le candidat est ajourné.</p></div>
           <div className="decide">
             <div className="stage">
-              <div className="stage-top"><span>Les 3 conditions de réussite</span><span>Toutes obligatoires</span></div>
+              <div className="stage-top"><span>Les 3 conditions de réussite</span></div>
               <div className="cond"><strong>{thresholds.global}/100</strong><span><b>Une note globale d’au moins {thresholds.global} sur 100</b><p>Elle combine les résultats des cinq épreuves.</p></span></div>
               <div className="cond"><strong>{thresholds.domain} %</strong><span><b>Au moins {thresholds.domain} % dans chacun des {duration.domains} domaines</b><p>Sécurité, conduite, service, fiabilité, professionnalisme. Un bon score global ne compense pas un domaine trop faible.</p></span></div>
               <div className="cond"><strong>0</strong><span><b>Aucune faute critique de sécurité</b><p>Un comportement qui met gravement en danger les passagers ou les autres usagers entraîne l’ajournement, quelle que soit la note.</p></span></div>
             </div>
             <div className="stage">
-              <div className="stage-top"><span>Trois exemples</span><span>Pour bien comprendre</span></div>
+              <div className="stage-top"><span>Trois exemples</span></div>
               <div className="cases-wrap" style={{ marginTop: 0 }}>
                 <table className="cases">
                   <thead><tr><th>Candidat</th><th>Note globale</th><th>Domaine le plus faible</th><th>Faute critique</th><th>Décision</th></tr></thead>
                   <tbody>
-                    <tr><td>A</td><td className="num-c">82/100</td><td className="num-c">Service 71 %</td><td>Aucune</td><td><span className="verdict v-ok">Certifié</span></td></tr>
-                    <tr><td>B</td><td className="num-c">81/100</td><td className="num-c">Service 55 %</td><td>Aucune</td><td><span className="verdict v-no">Ajourné</span></td></tr>
-                    <tr><td>C</td><td className="num-c">88/100</td><td className="num-c">Conduite 74 %</td><td>Oui</td><td><span className="verdict v-no">Ajourné</span></td></tr>
+                    <tr><td data-label="Candidat">A</td><td className="num-c" data-label="Note globale">82/100</td><td className="num-c" data-label="Domaine le plus faible">Service 71 %</td><td data-label="Faute critique">Aucune</td><td data-label="Décision"><span className="verdict v-ok">Certifié</span></td></tr>
+                    <tr><td data-label="Candidat">B</td><td className="num-c" data-label="Note globale">81/100</td><td className="num-c" data-label="Domaine le plus faible">Service 55 %</td><td data-label="Faute critique">Aucune</td><td data-label="Décision"><span className="verdict v-no">Ajourné</span></td></tr>
+                    <tr><td data-label="Candidat">C</td><td className="num-c" data-label="Note globale">88/100</td><td className="num-c" data-label="Domaine le plus faible">Conduite 74 %</td><td data-label="Faute critique">Oui</td><td data-label="Décision"><span className="verdict v-no">Ajourné</span></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -95,11 +95,11 @@ export default function Certification() {
         <div className="container split">
           <div>
             <p className="eyebrow">Le profil de compétences</p>
-            <h2>Bien plus qu’un « réussi / échoué ».</h2>
+            <h2>Bien plus qu’un «{'\u00A0'}réussi / échoué{'\u00A0'}».</h2>
             <p className="lead" style={{ marginTop: 20 }}>Chaque candidat reçoit son profil détaillé sur les cinq domaines évalués. Il sait précisément où il excelle et ce qu’il doit renforcer.</p>
           </div>
           <figure className="scorecard" aria-label="Exemple de profil de compétences" style={{ margin: 0, justifySelf: 'end' }}>
-            <div className="band"><span>Profil de compétences</span><span>Exemple</span></div>
+            <div className="band"><span>Profil de compétences</span></div>
             <div className="body">
               <div className="sc-top"><div><b>Candidat A</b><div className="small">Dossier PMD-2026-0042</div></div><div className="sc-score">82<small>/100</small></div></div>
               <div className="bar"><span>Sécurité</span><span className="t"><i style={{ width: '88%' }}></i></span><b>88</b></div>
@@ -182,6 +182,7 @@ export default function Certification() {
                 <li>Un glossaire des termes du métier</li>
               </ul>
               <div className="total" style={{ maxWidth: 520 }}><span>Parcours autodidacte : manuel + examen</span><b>{price.selfTaught} FCFA</b></div>
+              <div className="actions" style={{ marginTop: 22 }}><a className="button button-primary" href={whatsappUrl('Bonjour, je souhaite acheter le PMD™ BOOK')} target="_blank" rel="noopener">Acheter le manuel <span aria-hidden="true">↗</span></a></div>
             </div>
           </div>
           <div className="callout" style={{ marginTop: 28 }}><span><b>Notre engagement.</b> Chaque candidat connaît à l’avance les objectifs, les compétences visées, les modalités d’évaluation et les conditions de délivrance. Aucun résultat ni emploi n’est garanti.</span></div>

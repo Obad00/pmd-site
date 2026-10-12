@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Page from '../components/Page.jsx'
 import DemoForm from '../components/DemoForm.jsx'
 import { config, nextSessionLabel, price, sessionDate, sessionLabel } from '../config.js'
@@ -14,12 +13,9 @@ function validate(f) {
     if (a < minAge) return `Le programme est ouvert aux candidats de ${minAge} ans révolus à la date de début de session.`
   }
   if (f.querySelector('#c-permis').value === 'non') return 'Un permis de conduire valide est requis pour suivre le programme PMD.'
-  if (f.querySelector('#c-mot').value.trim().length < 50) return 'Votre motivation doit compter au moins 50 caractères.'
 }
 
 export default function Candidature() {
-  const [count, setCount] = useState(0)
-
   return (
     <Page name="candidature" title={`Candidater au programme PMD™ — session du ${sessionLabel}`} description={`Déposez votre candidature au programme PMD™ pour la session du ${sessionLabel}. Places limitées, trois minutes suffisent.`}>
       <section className="section" style={{ paddingTop: 68 }}>
@@ -41,7 +37,7 @@ export default function Candidature() {
               <div className="field"><label htmlFor="c-ses">Session souhaitée</label><select id="c-ses" required><option>{sessionLabel}</option><option>Session suivante ({nextSessionLabel})</option></select></div>
               <div className="field"><label htmlFor="c-act">Activité actuelle <span className="opt">(facultatif)</span></label><select id="c-act"><option value="">Sélectionner</option><option>Conducteur VTC</option><option>Chauffeur d’entreprise</option><option>Taxi</option><option>Autre emploi</option><option>Sans emploi</option><option>Étudiant</option></select></div>
               <div className="field"><label htmlFor="c-form">Formule</label><select id="c-form" required><option>Pack complet · {price.pack} FCFA</option><option>Formation seule · {price.training} FCFA</option><option>Examen seul (candidat libre) · {price.exam} FCFA</option></select></div>
-              <div className="field full"><label htmlFor="c-mot">Motivation</label><textarea id="c-mot" required minLength={50} maxLength={1500} placeholder="Pourquoi voulez-vous devenir conducteur professionnel ? Quelle est votre expérience ?" onInput={(e) => setCount(e.target.value.length)}></textarea><span className="counter" id="c-cnt">{count} / 1500</span></div>
+              <div className="field full"><label htmlFor="c-mot">Motivation</label><textarea id="c-mot" required maxLength={1500} placeholder="Pourquoi voulez-vous devenir conducteur professionnel ? Quelle est votre expérience ?"></textarea></div>
               <div className="field full"><label className="chk"><input type="checkbox" id="c-rgpd" required /> J’accepte que mes données soient utilisées pour traiter ma candidature, conformément à la politique de confidentialité.</label></div>
             </DemoForm>
           </div>
