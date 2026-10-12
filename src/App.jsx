@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
+import { ROUTES } from './routes.js'
 import Accueil from './pages/Accueil.jsx'
 import Certification from './pages/Certification.jsx'
 import Parcours from './pages/Parcours.jsx'
@@ -9,20 +10,33 @@ import Candidature from './pages/Candidature.jsx'
 import Contact from './pages/Contact.jsx'
 import Faq from './pages/Faq.jsx'
 import MentionsLegales from './pages/MentionsLegales.jsx'
+import Confidentialite from './pages/Confidentialite.jsx'
+import Cgu from './pages/Cgu.jsx'
+import PlanDuSite from './pages/PlanDuSite.jsx'
+
+const PAGES = {
+  '/': Accueil,
+  '/certification': Certification,
+  '/parcours': Parcours,
+  '/entreprises': Entreprises,
+  '/a-propos': APropos,
+  '/candidature': Candidature,
+  '/contact': Contact,
+  '/faq': Faq,
+  '/mentions-legales': MentionsLegales,
+  '/confidentialite': Confidentialite,
+  '/cgu': Cgu,
+  '/plan-du-site': PlanDuSite,
+}
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<Accueil />} />
-        <Route path="/certification" element={<Certification />} />
-        <Route path="/parcours" element={<Parcours />} />
-        <Route path="/entreprises" element={<Entreprises />} />
-        <Route path="/a-propos" element={<APropos />} />
-        <Route path="/candidature" element={<Candidature />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/faq" element={<Faq />} />
-        <Route path="/mentions-legales" element={<MentionsLegales />} />
+        {ROUTES.map(({ path }) => {
+          const PageComponent = PAGES[path]
+          return <Route key={path} path={path} element={<PageComponent />} />
+        })}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

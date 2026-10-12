@@ -59,7 +59,7 @@ export default function Layout() {
           <div className="footer-brand"><img src={logo} alt="PMD — Professional Mobility Driver Certification" /><p>Un programme porté par {config.brand}, consacré au développement et à l’évaluation des compétences des conducteurs professionnels de mobilité.</p><p>WhatsApp : {config.contact.phones.join(' · ')}<br />{config.contact.email}</p></div>
           <div><h4>Explorer</h4><nav aria-label="Explorer"><Link to="/certification">Certification</Link><Link to="/parcours">Parcours</Link><Link to="/entreprises">Entreprises</Link><Link to="/a-propos">À propos</Link></nav></div>
           <div><h4>Candidats</h4><nav aria-label="Candidats"><Link to="/candidature">Candidater</Link><Link to="/certification#tarifs">Tarifs</Link><Link to="/faq">Questions fréquentes</Link><Link to="/contact">Contact</Link></nav></div>
-          <div><h4>Informations</h4><nav aria-label="Informations"><Link to="/mentions-legales">Mentions légales</Link><Link to="/mentions-legales">Confidentialité</Link></nav></div>
+          <div><h4>Informations</h4><nav aria-label="Informations"><Link to="/mentions-legales">Mentions légales</Link><Link to="/confidentialite">Confidentialité et cookies</Link><Link to="/cgu">Conditions d’utilisation</Link><Link to="/plan-du-site">Plan du site</Link><a href="/confidentialite#cookies" data-cookie-settings>Gérer les cookies</a></nav></div>
         </div>
         <div className="container footer-bottom"><span>© <span id="yr">{YEAR}</span> PMD™ — Professional Mobility Driver Certification</span><span>Conduire est une compétence. Être conducteur professionnel est un métier.</span></div>
       </footer>

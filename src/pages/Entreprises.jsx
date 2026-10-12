@@ -72,7 +72,7 @@ export default function Entreprises() {
               <div className="field"><label htmlFor="e-del">Délai souhaité <span className="opt">(facultatif)</span></label><select id="e-del"><option>À définir</option><option>Moins d’un mois</option><option>1 à 3 mois</option><option>Plus de 3 mois</option></select></div>
               <div className="field full"><span className="lbl">Besoin</span><div className="chips"><label><input type="checkbox" id="b1" /> Formation</label><label><input type="checkbox" id="b2" /> Évaluation</label><label><input type="checkbox" id="b3" /> Certification</label><label><input type="checkbox" id="b4" /> Sur mesure</label></div></div>
               <div className="field full"><label htmlFor="e-msg">Message <span className="opt">(facultatif)</span></label><textarea id="e-msg" placeholder="Votre contexte, vos objectifs, vos contraintes…"></textarea></div>
-              <div className="field full"><label className="chk"><input type="checkbox" id="e-rgpd" required /> J’accepte que mes données soient utilisées pour traiter ma demande, conformément à la politique de confidentialité.</label></div>
+              <div className="field full"><label className="chk"><input type="checkbox" id="e-rgpd" required /> J’accepte que mes données soient utilisées pour traiter ma demande, conformément à la <Link to="/confidentialite">politique de confidentialité</Link>.</label></div>
             </DemoForm>
           </div>
           <aside className="panel">

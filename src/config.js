@@ -6,7 +6,7 @@ export const config = {
   duration: { weeks: 12, hours: 72, phases: 4, weeksPerPhase: 3, modulesPerPhase: 3, modules: 12, exams: 5, domains: 5 },
   session: { year: 2026, month: 12, day: 5, everyMonths: 3 },
   minAge: 21,
-  prices: { pack: 120000, training: 72000, exam: 48000, book: 14900 },
+  prices: { pack: 120000, training: 72000, exam: 48000, book: 14900, partnerPerEmployee: 72000 },
   thresholds: { quiz: 80, global: 75, domain: 60, retakeMonths: 3 },
   contact: {
     phones: ['+221 78 431 95 95', '+221 78 156 01 56'],
@@ -14,6 +14,7 @@ export const config = {
     email: 'support@yelloapp.co',
     city: 'Dakar, Sénégal',
   },
+  legalUpdated: '12 octobre 2026',
   // Tant que ce mode est actif, les formulaires valident les champs mais n'envoient et ne stockent rien.
   forms: { demo: true },
 }
@@ -46,4 +47,5 @@ export const price = {
   exam: fcfa(prices.exam),
   book: fcfa(prices.book),
   selfTaught: fcfa(prices.book + prices.exam),
+  partnerPerEmployee: fcfa(prices.partnerPerEmployee),
 }

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Page from '../components/Page.jsx'
 import DemoForm from '../components/DemoForm.jsx'
 import { config, nextSessionLabel, price, sessionDate, sessionLabel } from '../config.js'
@@ -38,7 +39,7 @@ export default function Candidature() {
               <div className="field"><label htmlFor="c-act">Activité actuelle <span className="opt">(facultatif)</span></label><select id="c-act"><option value="">Sélectionner</option><option>Conducteur VTC</option><option>Chauffeur d’entreprise</option><option>Taxi</option><option>Autre emploi</option><option>Sans emploi</option><option>Étudiant</option></select></div>
               <div className="field"><label htmlFor="c-form">Formule</label><select id="c-form" required><option>Pack complet · {price.pack} FCFA</option><option>Formation seule · {price.training} FCFA</option><option>Examen seul (candidat libre) · {price.exam} FCFA</option></select></div>
               <div className="field full"><label htmlFor="c-mot">Motivation</label><textarea id="c-mot" required maxLength={1500} placeholder="Pourquoi voulez-vous devenir conducteur professionnel ? Quelle est votre expérience ?"></textarea></div>
-              <div className="field full"><label className="chk"><input type="checkbox" id="c-rgpd" required /> J’accepte que mes données soient utilisées pour traiter ma candidature, conformément à la politique de confidentialité.</label></div>
+              <div className="field full"><label className="chk"><input type="checkbox" id="c-rgpd" required /> J’accepte que mes données soient utilisées pour traiter ma candidature, conformément à la <Link to="/confidentialite">politique de confidentialité</Link>.</label></div>
             </DemoForm>
           </div>
           <aside className="panel">

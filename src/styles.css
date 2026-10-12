@@ -360,3 +360,47 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
   .cases td:first-child{display:block;text-align:left;font-weight:700;background:var(--soft)}
   .cases td:first-child::before{content:attr(data-label) " ";font:inherit;letter-spacing:0;text-transform:none;color:inherit}
 }
+
+/* ===== Pages légales (pmd-pages-legales/fragments/pmd-legal.css, repris tel quel) ===== */
+.pmd-legal{--red:#A91518;--red-dark:#851114;--ink:#171717;--text:#424242;--muted:#626262;--line:#e4e4e4;--soft:#f6f6f5;
+  color:var(--text);font:400 16px/1.7 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.pmd-legal *{box-sizing:border-box}
+.pmd-legal h2{color:var(--ink);font-size:clamp(21px,2.2vw,25px);line-height:1.25;letter-spacing:-.025em;font-weight:720;
+  margin:56px 0 16px;padding-top:28px;border-top:1px solid var(--line);scroll-margin-top:110px}
+.pmd-legal > h2:first-child,.pmd-legal .pmd-toc + h2{margin-top:8px}
+.pmd-legal h3{color:var(--ink);font-size:17px;margin:28px 0 8px}
+.pmd-legal p{margin:0 0 14px}
+.pmd-legal strong{color:var(--ink);font-weight:650}
+.pmd-legal a{color:var(--red);font-weight:600;text-decoration:none}
+.pmd-legal a:hover{text-decoration:underline;text-underline-offset:4px}
+.pmd-legal ul{list-style:none;padding:0;margin:0 0 18px}
+.pmd-legal ul li{position:relative;padding:4px 0 4px 22px}
+.pmd-legal ul li:before{content:"";position:absolute;left:2px;top:15px;width:7px;height:2px;background:var(--red)}
+.pmd-legal .table-wrap{overflow-x:auto;margin:18px 0 26px;border:1px solid var(--line);border-radius:4px;background:#fff}
+.pmd-legal table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6;min-width:520px}
+.pmd-legal th,.pmd-legal td{text-align:left;vertical-align:top;padding:13px 16px;border-bottom:1px solid var(--line)}
+.pmd-legal thead th{background:var(--soft);color:var(--ink);font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase}
+.pmd-legal tbody tr:last-child td{border-bottom:0}
+.pmd-legal td:first-child{color:var(--ink);font-weight:600}
+/* Sommaire */
+.pmd-legal .pmd-toc{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin:0 0 40px}
+.pmd-legal .pmd-toc p{color:var(--red);font-size:11px;letter-spacing:.13em;font-weight:750;margin:0 0 12px}
+.pmd-legal .pmd-toc ol{columns:2 260px;column-gap:32px;margin:0;padding:0;list-style:none}
+.pmd-legal .pmd-toc li{break-inside:avoid;padding:3px 0}
+.pmd-legal .pmd-toc a{color:var(--text);font-weight:500;font-size:14px}
+.pmd-legal .pmd-toc a:hover{color:var(--red)}
+/* Plan du site */
+.pmd-legal.pmd-plan{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px 40px}
+.pmd-legal.pmd-plan section h2{font-size:12px;letter-spacing:.09em;text-transform:uppercase;margin:24px 0 10px;padding-top:18px}
+.pmd-legal.pmd-plan section h2 a{color:var(--ink)}
+.pmd-legal.pmd-plan ul li{padding:5px 0 5px 18px;font-size:14px}
+.pmd-legal.pmd-plan ul li:before{top:17px;width:6px}
+.pmd-legal.pmd-plan a{color:var(--text);font-weight:500}
+.pmd-legal.pmd-plan a:hover{color:var(--red)}
+
+/* Adaptations au site : le conteneur légal est un élément de grille (les tableaux défilent dans leur cadre),
+   et le décalage d'ancre s'ajoute au scroll-padding-top de 96 px déjà posé sur html. */
+.pmd-legal{min-width:0}
+.pmd-legal h2{scroll-margin-top:14px}
+.chk a{color:var(--red);font-weight:600}
+.chk a:hover{text-decoration:underline;text-underline-offset:4px}
