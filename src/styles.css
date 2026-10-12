@@ -404,3 +404,16 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .pmd-legal h2{scroll-margin-top:14px}
 .chk a{color:var(--red);font-weight:600}
 .chk a:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ===== Animations ===== */
+/* Apparition au défilement (hook useReveal) : fondu + translation de 16 px, 500 ms. */
+[data-reveal]{transition:opacity .5s ease,transform .5s ease;transition-delay:var(--reveal-delay,0ms)}
+[data-reveal="pending"]{opacity:0;transform:translateY(16px)}
+@media print{[data-reveal]{opacity:1!important;transform:none!important}}
+/* Survol : légère élévation des cartes et des boutons. */
+.button{transition:background .18s,border-color .18s,transform .18s,box-shadow .18s}
+.price-card,.person,.stage{transition:transform .2s,box-shadow .2s,border-color .2s}
+@media (hover:hover){
+  .button:hover{box-shadow:0 8px 18px rgba(0,0,0,.12)}
+  .price-card:hover,.person:hover,.stage:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.06)}
+}
