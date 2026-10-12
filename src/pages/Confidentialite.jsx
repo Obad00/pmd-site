@@ -70,13 +70,13 @@ export default function Confidentialite() {
         <h2 id="destinataires">6. Destinataires de vos données</h2>
         <p>Vos données sont accessibles aux seules personnes habilitées de {brand} (équipe pédagogique, jury, administration) dans la limite de leurs fonctions. La plateforme de formation en ligne (<a href="https://www.yelloapp.co">www.yelloapp.co</a>) est exploitée par {brand}. Vos données peuvent être communiquées :</p>
         <ul>
-          <li>à nos prestataires techniques, qui agissent sur nos instructions et sont tenus à la confidentialité : hébergement du site et des données (o2switch, France), paiement (Wave, Orange Money et notre banque), messagerie (WhatsApp, service de Meta), mesure d’audience (Amplitude) et outil de formulaires en ligne ;</li>
+          <li>à nos prestataires techniques, qui agissent sur nos instructions et sont tenus à la confidentialité : hébergement du site et des données (o2switch, France), paiement (Wave, Orange Money et notre banque), messagerie (WhatsApp, service de Meta), mesure d’audience (Amplitude), stockage des candidatures et envoi des e-mails (Google Sheets et Gmail, services de Google) et outil de formulaires en ligne ;</li>
           <li>à l’entreprise partenaire qui finance votre parcours, dans les limites de l’article 5 ;</li>
           <li>aux autorités administratives ou judiciaires, lorsque la loi l’impose.</li>
         </ul>
         <p><strong>Nous ne vendons ni ne louons vos données personnelles.</strong></p>
         <h2 id="transferts">7. Transferts hors du Sénégal</h2>
-        <p>Vos données sont hébergées en <strong>France</strong> par o2switch. Les données de mesure d’audience sont traitées par Amplitude, qui peut les héberger aux États-Unis. Les messages échangés par WhatsApp transitent par les serveurs de Meta, hors du Sénégal.</p>
+        <p>Le site est hébergé en <strong>France</strong> par o2switch. Les données de mesure d’audience sont traitées par Amplitude, qui peut les héberger aux États-Unis. Les messages échangés par WhatsApp transitent par les serveurs de Meta, hors du Sénégal. Les candidatures et demandes envoyées par les formulaires du site sont enregistrées dans Google Sheets et les e-mails correspondants sont envoyés par Gmail, services de Google, dont les serveurs peuvent être situés hors de l’Union européenne.</p>
         <p>Ces transferts ne sont effectués que vers des pays ou des prestataires offrant un niveau de protection suffisant (la France applique le Règlement général sur la protection des données de l’Union européenne), ou avec les garanties et autorisations prévues par la loi n° 2008-12, notamment l’autorisation de la CDP lorsqu’elle est requise.</p>
         <h2 id="conservation">8. Durée de conservation</h2>
         <div className="table-wrap"><table>

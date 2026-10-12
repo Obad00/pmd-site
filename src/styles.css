@@ -405,6 +405,10 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .chk a{color:var(--red);font-weight:600}
 .chk a:hover{text-decoration:underline;text-underline-offset:4px}
 
+/* Formulaires : champ piège anti-robots (hors écran) et lien de repli dans le message d'erreur. */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.err a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.button:disabled{opacity:.6;cursor:progress}
 /* ===== Animations ===== */
 /* Apparition au défilement (hook useReveal) : fondu + translation de 16 px, 500 ms. */
 [data-reveal]{transition:opacity .5s ease,transform .5s ease;transition-delay:var(--reveal-delay,0ms)}

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Page from '../components/Page.jsx'
-import DemoForm from '../components/DemoForm.jsx'
+import SiteForm from '../components/SiteForm.jsx'
 import photoVolant from '../assets/photo-conducteur-volant.jpg'
 
 export default function Entreprises() {
@@ -61,19 +61,19 @@ export default function Entreprises() {
             <p className="eyebrow">Demande entreprise</p>
             <h2 style={{ marginBottom: 10 }}>Parlons de vos besoins.</h2>
             <p className="muted" style={{ marginBottom: 30 }}>Réponse sous deux jours ouvrés.</p>
-            <DemoForm id="f-ent" errId="e-err" submitLabel="Envoyer la demande" success={['Merci, votre demande est bien reçue.', 'Nous revenons vers vous sous deux jours ouvrés pour échanger sur vos besoins.']}>
-              <div className="field"><label htmlFor="e-co">Entreprise</label><input id="e-co" required autoComplete="organization" /></div>
-              <div className="field"><label htmlFor="e-sec">Secteur</label><select id="e-sec" required><option value="">Sélectionner</option><option>VTC / flotte</option><option>Hôtellerie</option><option>Tourisme</option><option>Transport de personnel</option><option>Services premium</option><option>Autre</option></select></div>
-              <div className="field"><label htmlFor="e-nom">Nom et prénom</label><input id="e-nom" required autoComplete="name" /></div>
-              <div className="field"><label htmlFor="e-fn">Fonction</label><input id="e-fn" required autoComplete="organization-title" /></div>
-              <div className="field"><label htmlFor="e-mail">E-mail professionnel</label><input id="e-mail" type="email" required autoComplete="email" /></div>
-              <div className="field"><label htmlFor="e-tel">Téléphone</label><input id="e-tel" type="tel" required placeholder="+221" autoComplete="tel" /></div>
-              <div className="field"><label htmlFor="e-nb">Conducteurs concernés</label><select id="e-nb" required><option value="">Sélectionner</option><option>1 à 5</option><option>6 à 20</option><option>21 à 50</option><option>Plus de 50</option></select></div>
-              <div className="field"><label htmlFor="e-del">Délai souhaité <span className="opt">(facultatif)</span></label><select id="e-del"><option>À définir</option><option>Moins d’un mois</option><option>1 à 3 mois</option><option>Plus de 3 mois</option></select></div>
-              <div className="field full"><span className="lbl">Besoin</span><div className="chips"><label><input type="checkbox" id="b1" /> Formation</label><label><input type="checkbox" id="b2" /> Évaluation</label><label><input type="checkbox" id="b3" /> Certification</label><label><input type="checkbox" id="b4" /> Sur mesure</label></div></div>
-              <div className="field full"><label htmlFor="e-msg">Message <span className="opt">(facultatif)</span></label><textarea id="e-msg" placeholder="Votre contexte, vos objectifs, vos contraintes…"></textarea></div>
-              <div className="field full"><label className="chk"><input type="checkbox" id="e-rgpd" required /> J’accepte que mes données soient utilisées pour traiter ma demande, conformément à la <Link to="/confidentialite">politique de confidentialité</Link>.</label></div>
-            </DemoForm>
+            <SiteForm type="entreprise" id="f-ent" errId="e-err" submitLabel="Envoyer la demande" success={['Merci, votre demande est bien reçue.', 'Nous revenons vers vous sous deux jours ouvrés pour échanger sur vos besoins.']}>
+              <div className="field"><label htmlFor="e-co">Entreprise</label><input id="e-co" name="entreprise" required autoComplete="organization" /></div>
+              <div className="field"><label htmlFor="e-sec">Secteur</label><select id="e-sec" name="secteur" required><option value="">Sélectionner</option><option>VTC / flotte</option><option>Hôtellerie</option><option>Tourisme</option><option>Transport de personnel</option><option>Services premium</option><option>Autre</option></select></div>
+              <div className="field"><label htmlFor="e-nom">Nom et prénom</label><input id="e-nom" name="nom" required autoComplete="name" /></div>
+              <div className="field"><label htmlFor="e-fn">Fonction</label><input id="e-fn" name="fonction" required autoComplete="organization-title" /></div>
+              <div className="field"><label htmlFor="e-mail">E-mail professionnel</label><input id="e-mail" name="email" type="email" required autoComplete="email" /></div>
+              <div className="field"><label htmlFor="e-tel">Téléphone</label><input id="e-tel" name="telephone" type="tel" required placeholder="+221" autoComplete="tel" /></div>
+              <div className="field"><label htmlFor="e-nb">Conducteurs concernés</label><select id="e-nb" name="conducteurs" required><option value="">Sélectionner</option><option>1 à 5</option><option>6 à 20</option><option>21 à 50</option><option>Plus de 50</option></select></div>
+              <div className="field"><label htmlFor="e-del">Délai souhaité <span className="opt">(facultatif)</span></label><select id="e-del" name="delai"><option>À définir</option><option>Moins d’un mois</option><option>1 à 3 mois</option><option>Plus de 3 mois</option></select></div>
+              <div className="field full"><span className="lbl">Besoin</span><div className="chips"><label><input type="checkbox" id="b1" name="besoins" value="Formation" /> Formation</label><label><input type="checkbox" id="b2" name="besoins" value="Évaluation" /> Évaluation</label><label><input type="checkbox" id="b3" name="besoins" value="Certification" /> Certification</label><label><input type="checkbox" id="b4" name="besoins" value="Sur mesure" /> Sur mesure</label></div></div>
+              <div className="field full"><label htmlFor="e-msg">Message <span className="opt">(facultatif)</span></label><textarea id="e-msg" name="message" maxLength={3000} placeholder="Votre contexte, vos objectifs, vos contraintes…"></textarea></div>
+              <div className="field full"><label className="chk"><input type="checkbox" id="e-rgpd" name="consentement" value="oui" required /> J’accepte que mes données soient utilisées pour traiter ma demande, conformément à la <Link to="/confidentialite">politique de confidentialité</Link>.</label></div>
+            </SiteForm>
           </div>
           <aside className="panel">
             <div className="band">Secteurs accompagnés</div>

@@ -15,8 +15,6 @@ export const config = {
     city: 'Dakar, Sénégal',
   },
   legalUpdated: '12 octobre 2026',
-  // Tant que ce mode est actif, les formulaires valident les champs mais n'envoient et ne stockent rien.
-  forms: { demo: true },
 }
 
 const MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']

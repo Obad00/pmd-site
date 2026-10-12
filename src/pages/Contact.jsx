@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Page from '../components/Page.jsx'
-import DemoForm from '../components/DemoForm.jsx'
+import SiteForm from '../components/SiteForm.jsx'
 import { config } from '../config.js'
 
 const { contact, brand } = config
@@ -19,14 +19,14 @@ export default function Contact() {
             <Link to="/faq"><span className="kick">J’ai une question</span><h3>Lire la FAQ →</h3><p>Ou écrivez-nous ci-dessous.</p></Link>
           </div>
           <div className="formwrap">
-            <DemoForm id="f-contact" errId="k-err" submitLabel="Envoyer le message" success={['Merci, votre message est bien envoyé.', 'Nous vous répondons dans les meilleurs délais.']}>
-              <div className="field"><label htmlFor="k-nom">Nom</label><input id="k-nom" required autoComplete="name" /></div>
-              <div className="field"><label htmlFor="k-mail">E-mail</label><input id="k-mail" type="email" required autoComplete="email" /></div>
-              <div className="field"><label htmlFor="k-tel">Téléphone <span className="opt">(facultatif)</span></label><input id="k-tel" type="tel" placeholder="+221" autoComplete="tel" /></div>
-              <div className="field"><label htmlFor="k-obj">Objet</label><select id="k-obj" required><option value="">Sélectionner</option><option>Programme</option><option>Certification</option><option>Paiement</option><option>PMD™ BOOK</option><option>Partenariat</option><option>Presse</option><option>Autre</option></select></div>
-              <div className="field full"><label htmlFor="k-msg">Message</label><textarea id="k-msg" required></textarea></div>
-              <div className="field full"><label className="chk"><input type="checkbox" id="k-rgpd" required /> J’accepte que mes données soient utilisées pour répondre à mon message.</label></div>
-            </DemoForm>
+            <SiteForm type="contact" id="f-contact" errId="k-err" submitLabel="Envoyer le message" success={['Merci, votre message est bien envoyé.', 'Nous vous répondons dans les meilleurs délais.']}>
+              <div className="field"><label htmlFor="k-nom">Nom</label><input id="k-nom" name="nom" required autoComplete="name" /></div>
+              <div className="field"><label htmlFor="k-mail">E-mail</label><input id="k-mail" name="email" type="email" required autoComplete="email" /></div>
+              <div className="field"><label htmlFor="k-tel">Téléphone <span className="opt">(facultatif)</span></label><input id="k-tel" name="telephone" type="tel" placeholder="+221" autoComplete="tel" /></div>
+              <div className="field"><label htmlFor="k-obj">Objet</label><select id="k-obj" name="objet" required><option value="">Sélectionner</option><option>Programme</option><option>Certification</option><option>Paiement</option><option>PMD™ BOOK</option><option>Partenariat</option><option>Presse</option><option>Autre</option></select></div>
+              <div className="field full"><label htmlFor="k-msg">Message</label><textarea id="k-msg" name="message" maxLength={3000} required></textarea></div>
+              <div className="field full"><label className="chk"><input type="checkbox" id="k-rgpd" name="consentement" value="oui" required /> J’accepte que mes données soient utilisées pour répondre à mon message.</label></div>
+            </SiteForm>
             <aside className="panel">
               <div className="band">Coordonnées</div>
               <dl>

@@ -26,3 +26,4 @@ dist-ssr
 # Local only
 CLAUDE.md
 .env*
+!.env.example
