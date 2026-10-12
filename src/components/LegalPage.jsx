@@ -11,7 +11,7 @@ export default function LegalPage({ name, title, intro, description, dated = tru
             <p className="eyebrow">Informations légales</p>
             <h1 style={{ fontSize: 'clamp(32px,4vw,48px)', marginBottom: 14 }}>{title}</h1>
             <p className="lead">{intro}</p>
-            {dated && <p className="small" style={{ marginTop: 14 }}>Dernière mise à jour : {config.legalUpdated}</p>}
+            {dated && <p className="small updated" style={{ marginTop: 14 }}>Dernière mise à jour : {config.legalUpdated}</p>}
           </div>
           {children}
         </div>

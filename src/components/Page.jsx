@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
-import { useReveal } from '../hooks/useReveal.js'
+import { useMotion } from '../hooks/useMotion.js'
 
 // Enveloppe d'une page : reprend le conteneur .page de la maquette et pose <title> + meta description.
 export default function Page({ name, title, description, children }) {
   const ref = useRef(null)
-  useReveal(ref)
+  useMotion(ref)
 
   useEffect(() => {
     document.title = title

@@ -21,6 +21,15 @@ export default function Layout() {
   const open = openKey === location.key
   const setOpen = (next) => setOpenKey(next ? location.key : null)
 
+  // En-tête compact (hauteur réduite + ombre) au-delà de 24 px de défilement.
+  const [scrolled, setScrolled] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   // Même comportement que la maquette : haut de page à chaque navigation, sauf ancre (#tarifs, #demande).
   useEffect(() => {
     const id = location.hash.slice(1)
@@ -37,7 +46,7 @@ export default function Layout() {
   return (
     <>
       <a className="skip" href="#contenu">Aller au contenu</a>
-      <header className="site-header">
+      <header className={scrolled ? 'site-header is-scrolled' : 'site-header'}>
         <div className="container nav-wrap">
           <Link className="brand" to="/" aria-label="PMD, accueil"><img src={logo} alt="PMD — Professional Mobility Driver Certification" /></Link>
           <button className="menu-toggle" id="burger" type="button" aria-expanded={open} aria-controls="nav" aria-label="Ouvrir le menu" onClick={() => setOpen(!open)}><span></span><span></span></button>

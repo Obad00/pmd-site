@@ -409,15 +409,82 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .err a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .button:disabled{opacity:.6;cursor:progress}
-/* ===== Animations ===== */
-/* Apparition au défilement (hook useReveal) : fondu + translation de 16 px, 500 ms. */
-[data-reveal]{transition:opacity .5s ease,transform .5s ease;transition-delay:var(--reveal-delay,0ms)}
-[data-reveal="pending"]{opacity:0;transform:translateY(16px)}
-@media print{[data-reveal]{opacity:1!important;transform:none!important}}
-/* Survol : légère élévation des cartes et des boutons. */
-.button{transition:background .18s,border-color .18s,transform .18s,box-shadow .18s}
-.price-card,.person,.stage{transition:transform .2s,box-shadow .2s,border-color .2s}
+/* ===== Animations (src/lib/motion.js) =====
+   Une seule courbe, des durées de 600 à 900 ms, 8 px de translation au plus. Les états de départ ([data-m-state="pending"])
+   ne sont posés que par le script ; prefers-reduced-motion désactive tout (règle globale plus haut + sortie du script). */
+:root{--ease:cubic-bezier(.16,1,.3,1)}
+
+/* Changement de page : fondu de 200 ms. */
+.page{animation:m-page .2s ease both}
+@keyframes m-page{from{opacity:0}to{opacity:1}}
+
+/* Blocs : fondu + 8 px. */
+[data-m="fade"]{transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--m-delay,0ms)}
+[data-m="fade"][data-m-state="pending"]{opacity:0;transform:translateY(8px)}
+
+/* Titres : chaque ligne monte depuis un masque, 60 ms d'écart entre les lignes. */
+[data-m="title"][data-m-state="pending"]{opacity:0}
+/* Colonne flex pendant l'animation : les marges négatives des lignes ne fusionnent pas, la hauteur du titre ne bouge pas. */
+[data-m="title"][data-m-state="in"]{display:flex;flex-direction:column}
+m-line{display:block;overflow:hidden;white-space:nowrap;padding:.14em 0;margin:-.14em 0}
+m-in{display:block;animation:m-line .8s var(--ease) both;animation-delay:calc(var(--m-delay,0ms) + var(--m-i,0) * 60ms)}
+@keyframes m-line{from{transform:translateY(105%)}to{transform:none}}
+
+/* Filets : le trait des eyebrows et les séparateurs de listes se tracent depuis la gauche. */
+[data-m="eyebrow"]{transition:opacity .7s var(--ease);transition-delay:var(--m-delay,0ms)}
+[data-m="eyebrow"]::before{transform-origin:left;transition:transform .7s var(--ease);transition-delay:var(--m-delay,0ms)}
+[data-m="eyebrow"][data-m-state="pending"]{opacity:0}
+[data-m="eyebrow"][data-m-state="pending"]::before{transform:scaleX(0)}
+[data-m="rule"],[data-m="line"]{position:relative}
+[data-m="rule"][data-m-side="bottom"]{border-bottom-color:transparent}
+[data-m="rule"][data-m-side="top"],[data-m="line"]{border-top-color:transparent}
+[data-m="rule"]::after,[data-m="line"]::after{content:"";position:absolute;left:0;right:0;height:var(--m-rule-w,1px);background:var(--m-rule-c,#ddd);transform-origin:left;transition:transform .7s var(--ease);transition-delay:var(--m-delay,0ms)}
+[data-m-side="bottom"]::after{bottom:calc(-1 * var(--m-rule-w,1px))}
+[data-m-side="top"]::after{top:calc(-1 * var(--m-rule-w,1px))}
+[data-m="rule"][data-m-state="pending"]::after,[data-m="line"][data-m-state="pending"]::after{transform:scaleX(0)}
+[data-m="rule"]>*,[data-m="rule"]::before{transition:opacity .7s var(--ease);transition-delay:var(--m-delay,0ms)}
+[data-m="rule"][data-m-state="pending"]>*,[data-m="rule"][data-m-state="pending"]::before{opacity:0}
+
+/* Images : fondu + échelle de 1,03 à 1 en 900 ms. */
+[data-m="image"]{transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--m-delay,0ms)}
+[data-m="image"] img{transition:transform .9s var(--ease);transition-delay:var(--m-delay,0ms)}
+[data-m="image"][data-m-state="pending"]{opacity:0}
+[data-m="image"][data-m-state="pending"] img{transform:scale(1.03)}
+
+/* En-tête : compact et ombré au-delà de 24 px de défilement. */
+@media (prefers-reduced-motion:no-preference){
+  .site-header{transition:height .6s var(--ease),box-shadow .6s var(--ease)}
+  .brand img{transition:height .6s var(--ease)}
+  .site-header.is-scrolled{height:68px;box-shadow:0 1px 0 rgba(0,0,0,.04),0 10px 30px rgba(0,0,0,.06)}
+  .site-header.is-scrolled .brand img{height:46px}
+  @media (max-width:900px){
+    .main-nav{top:100%}
+    .site-header.is-scrolled{height:62px}
+    .site-header.is-scrolled .brand img{height:42px}
+  }
+}
+
+/* Boutons : le fond se remplit au survol, la flèche se décale de 2 px. */
+.button{position:relative;overflow:hidden;isolation:isolate;transition:color .6s var(--ease),border-color .6s var(--ease),transform .6s var(--ease)}
+.button::before{content:"";position:absolute;inset:-1px;z-index:-1;background:var(--fill,transparent);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.button span[aria-hidden]{display:inline-block;transition:transform .6s var(--ease)}
+.button-primary{--fill:var(--red-dark)}
+.button-secondary{--fill:#f2f2f2}
+.button-light{--fill:#e4e4e4}
+.button-ghost{--fill:#fff}
 @media (hover:hover){
-  .button:hover{box-shadow:0 8px 18px rgba(0,0,0,.12)}
+  .button:hover::before{transform:scaleX(1)}
+  .button:hover span[aria-hidden]{transform:translate(2px,-2px)}
+  .button-primary:hover{background:var(--red)}
+  .button-secondary:hover{border-color:var(--ink)}
+  .button-light:hover{background:#fff}
+  .button-ghost:hover{color:var(--ink);border-color:#fff}
+}
+.button:disabled::before{display:none}
+
+/* Cartes : légère élévation au survol. */
+.price-card,.person,.stage{transition:transform .6s var(--ease),box-shadow .6s var(--ease),border-color .6s var(--ease)}
+@media (hover:hover){
   .price-card:hover,.person:hover,.stage:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.06)}
 }
+@media print{[data-m]{opacity:1!important;transform:none!important}[data-m]>*,[data-m]::before{opacity:1!important}}
